@@ -1,0 +1,42 @@
+<app-search (enteredYear)="handleResults($event)" ></app-search>
+<ng-container>
+  <section class="container">
+    <mat-card *ngFor="let launch of launchList" class="example-card">
+      <!-- Header with Mission Name and Time -->
+      <mat-card-header>
+        <mat-card-title>{{ launch.mission_name}}</mat-card-title>
+        <mat-card-subtitle>{{ utcToLocal(launch.launch_date_utc) }}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- End Header -->
+      <img mat-card-image 
+        height="300"
+        width="300"
+        loading="lazy"
+        [src]= "launch.links.flickr_images[0] != null ?launch.links.flickr_images[0]: launch.links.mission_patch_small "
+        alt="Photo of {{ launch.mission_name }}"
+      />
+      <!-- Text Info -->
+      <mat-card-content>
+        <!-- Rocket Name -->
+        <p> <b>ROCKET: {{ launch.rocket.rocket_name }}</b> </p>
+        <!-- Mission Status -->
+        <p> <b>{{ missionStatus(launch.launch_success)}}</b> </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="white">     
+          <div class="card-list-details">
+            <a routerLink="/launch/{{ launch.id }}"> <b>Brief INFO</b></a>
+          </div> 
+        </button>
+        <button mat-raised-button color="white">
+          <div class="wiki-details">
+            <a href="https://en.wikipedia.org/wiki/Sentinel-6_Michael_Frielich"><b>WIKI</b></a> 
+          </div>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+
+
+  
+</ng-container>
