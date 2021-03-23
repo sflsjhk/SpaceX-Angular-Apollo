@@ -1,0 +1,36 @@
+<ng-container>
+    <div class="header">
+        <h2>Search Result: All launches from {{ fetched_year }}</h2>
+    </div>
+    <section class="container">
+      <mat-card *ngFor="let launch of launchList" class="example-card">
+        <!-- Header with Mission Name and Time -->
+        <mat-card-header>
+          <mat-card-title>{{ launch.mission_name }}</mat-card-title>
+          <mat-card-subtitle>{{ utcToLocal(launch.launch_date_utc) }}</mat-card-subtitle>
+        </mat-card-header>
+        <!-- End Header -->
+        <!-- Text Info -->
+        <mat-card-content>
+          <!-- Rocket Name -->
+          <p> <b>ROCKET: {{ launch.rocket.rocket_name }}</b> </p>
+          <!-- Mission Status -->
+          <p> <b>{{ missionStatus(launch.launch_success)}}</b> </p>
+          <p> <b>MISSION DETAILS:</b></p>
+            <p>{{ launch.details }}</p>
+        </mat-card-content>
+        <img mat-card-image
+            class = "flickr" 
+            height=500px
+            width=500px
+            loading="lazy"
+            [src]= "launch.links.flickr_images[0] != null ?launch.links.flickr_images[0]: launch.links.mission_patch_small "
+            alt="Photo of {{ launch.mission_name }}"
+        />
+
+      </mat-card>
+    </section>
+  
+  
+    
+  </ng-container>

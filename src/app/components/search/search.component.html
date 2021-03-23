@@ -1,1 +1,4 @@
-<p>search works!</p>
+  <form class="form" (ngSubmit)="onSubmit()">
+    <input type = "text" name = "year" [(ngModel)]="year" placeholder="enter the year you want to learn more about...">
+    <input type="submit" routerLink="year/{{year}}" value="Search Year" class="btn">
+</form>

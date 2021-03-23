@@ -1,1 +1,31 @@
-<p>launchdetails works!</p>
+<ng-container *ngIf="launchDetails$ | async as launchDetails">
+    <section style="padding-top: 20px;">
+      <mat-card style="width: 400px; margin: auto;">
+        <!-- Header -->
+        <mat-card-header>
+          <!-- Title Mission Name and Time -->
+          <mat-card-title>{{ launchDetails.mission_name }}</mat-card-title>
+          <mat-card-subtitle>{{ utcToLocal(launchDetails.launch_date_utc) }}</mat-card-subtitle>
+        </mat-card-header>
+        <!-- End of Header -->
+        <mat-card-content>
+            <!-- Rocket Name -->
+            <p> <b>ROCKET: {{ launchDetails.rocket.rocket_name }}</b> </p>
+            <!-- Mission Status -->
+            <p> <b>{{ missionStatus(launchDetails.launch_success)}}</b> </p>
+            <!-- Details -->
+          <p>{{ launchDetails.details }}</p>
+        </mat-card-content>
+      </mat-card>
+    </section>
+    <section class="photo-grid">
+      <img
+        *ngFor="let pic of launchDetails.links.flickr_images"
+        [src]="pic"
+        alt="Picture of {{ launchDetails.mission_name }}"
+        height="300"
+        width="300"
+        loading="lazy"
+      />
+    </section>
+  </ng-container>
