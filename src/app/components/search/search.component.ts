@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.sass']
 })
 export class SearchComponent implements OnInit {
-
+  @Output() enteredYear:EventEmitter<string> = new EventEmitter();
+  
+  year:string = "";
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  onSubmit() {
+    const year = this.year;
+    this.enteredYear.emit(year);
+  }
 }
