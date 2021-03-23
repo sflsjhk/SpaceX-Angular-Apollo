@@ -3,8 +3,8 @@ query launchList(
   $year: String
 ) {
   launchesPast(
-    limit: 30
-    find: { launch_year: $year}
+    limit: $limit
+    find: {launch_year: $year}
   ) {
     id
     mission_name
@@ -19,5 +19,6 @@ query launchList(
     launch_date_utc
     launch_year
     launch_success
+    details
   }
 }

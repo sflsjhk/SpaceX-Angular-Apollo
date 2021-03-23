@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LaunchListComponent } from './launchlist.component';
+import { YeardetailsComponent } from './yeardetails.component';
 
-describe('LaunchlistComponent', () => {
-  let component: LaunchListComponent;
-  let fixture: ComponentFixture<LaunchListComponent>;
+describe('YeardetailsComponent', () => {
+  let component: YeardetailsComponent;
+  let fixture: ComponentFixture<YeardetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LaunchListComponent ]
+      declarations: [ YeardetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LaunchListComponent);
+    fixture = TestBed.createComponent(YeardetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
