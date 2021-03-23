@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/spacex-angular-apollo'),
+      dir: require('path').join(__dirname, './coverage/plasmaAngular'),
       subdir: '.',
       reporters: [
         { type: 'html' },
