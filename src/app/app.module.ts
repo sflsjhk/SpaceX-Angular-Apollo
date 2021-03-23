@@ -7,6 +7,7 @@ import { LaunchdetailsComponent } from './components/launchdetails/launchdetails
 import { LaunchlistComponent } from './components/launchlist/launchlist.component';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { YearsdetailsComponent } from './components/yearsdetails/yearsdetails.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HeaderComponent } from './layout/header/header.component';
     LaunchdetailsComponent,
     LaunchlistComponent,
     SearchComponent,
-    HeaderComponent
+    HeaderComponent,
+    YearsdetailsComponent
   ],
   imports: [
     BrowserModule,
