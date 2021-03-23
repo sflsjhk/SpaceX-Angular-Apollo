@@ -1,18 +1,11 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import { LaunchListGQL } from '../../services/spacexGraphql.services';
-import { YearDetailsGQL } from '../../services/spacexGraphql.services';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-yeardetails',
   templateUrl: './yeardetails.component.html',
   styleUrls: ['./yeardetails.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class YeardetailsComponent implements OnInit {
@@ -27,25 +20,16 @@ export class YeardetailsComponent implements OnInit {
 
   constructor(
     private launchListService: LaunchListGQL,
-    private yearDetailsService: YearDetailsGQL,
     private route: ActivatedRoute,
-    private changeDetect: ChangeDetectorRef
 
   ) {}
   
 
-  /**
-   * On initialization we are fetching data from the GraphQL server.
-   */
+// Data Fetching from graphql
   ngOnInit(): void {
     this.launchListQuery.valueChanges.subscribe(({ data }) => {
       this.launchList = data.launchesPast!;
-      this.update();
     });
-
-  }
-  update(): void {
-    this.changeDetect.detectChanges();
   }
 
   // Check for mission status: Success or Failed

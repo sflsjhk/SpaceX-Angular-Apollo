@@ -1,5 +1,4 @@
 import {Component,OnInit} from '@angular/core'
-import {ChangeDetectionStrategy,ChangeDetectorRef} from '@angular/core';
 import { LaunchListGQL } from '../../services/spacexGraphql.services';
 
 
@@ -7,7 +6,6 @@ import { LaunchListGQL } from '../../services/spacexGraphql.services';
   selector: 'app-launchlist',
   templateUrl: './launchlist.component.html',
   styleUrls: ['./launchlist.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class LaunchListComponent implements OnInit {;
@@ -19,20 +17,17 @@ export class LaunchListComponent implements OnInit {;
 
   constructor(
     private launchListService: LaunchListGQL,
-    private changeDetect: ChangeDetectorRef
   ) {}
 
   // On initialization we are fetching data from the GraphQL server.
   ngOnInit(): void {
     this.launchListQuery.valueChanges.subscribe(({ data }) => {
       this.launchList = data.launchesPast!;
-      this.update();
     });
   }
-
+// Handle emit event
   handleResults(event: string){
       this.launchYear = event;
-      console.log(this.launchYear);
     }
 
 // Check for mission status: Success or Failed
@@ -58,10 +53,6 @@ export class LaunchListComponent implements OnInit {;
       },
     });
     this.launchList = [...this.launchList, ...data.launchesPast!];
-    this.update();
   }
 
-  update(): void {
-    this.changeDetect.detectChanges();
-  }
 }
